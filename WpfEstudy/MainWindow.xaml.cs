@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfEstudy.Domain.Entity;
 using WpfEstudy.Domain.Interface.Service;
+using WpfEstudy.Service.ViewModel;
 
 namespace WpfEstudy
 {
@@ -30,13 +31,8 @@ namespace WpfEstudy
             InitializeComponent();
             service = pessoaService;
 
-            var teste = service.FindTeste(1);
+            DataContext = new PessoaViewModel(service);
         }
 
-        private async Task<bool> RetornaListaAsync()
-        {
-            DataContext = new ObservableCollection<Pessoa>(await service.FindAll());
-            return true;
-        }
     }
 }

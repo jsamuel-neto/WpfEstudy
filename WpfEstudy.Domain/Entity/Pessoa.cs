@@ -8,6 +8,6 @@ namespace WpfEstudy.Domain.Entity
     {
         public int id { get; set; }
         public String nome { get; set; }
-        public int documento { get; set; }
+        public String documento { get; set; }
     }
 }

@@ -42,7 +42,7 @@ namespace WpfEstudy
         private void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<WpfEstudyDBContext>(option =>
-                    option.UseNpgsql("Host=localhost; Port=5432; Database=MinhaVidaFinanceira; User Id=; Password="),
+                    option.UseNpgsql("Host=localhost; Port=5432; Database=MinhaVidaFinanceira; User Id=postgres; Password=AiS2Keit"),
                     ServiceLifetime.Scoped);
 
             services.AddScoped<IPessoaRepository, PessoaRepository>();

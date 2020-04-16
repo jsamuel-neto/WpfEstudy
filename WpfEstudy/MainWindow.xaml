@@ -18,11 +18,11 @@
         </StackPanel>
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Visible"
                       VerticalScrollBarVisibility="Hidden">
-            <DataGrid AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Pessoas}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
-                    <DataGridTextColumn Header="Banco" Binding="{Binding Banco}"/>
+                    <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
+                    <DataGridTextColumn Header="Nome" Binding="{Binding nome}"/>
+                    <DataGridTextColumn Header="Documento" Binding="{Binding documento}"/>
                 </DataGrid.Columns>                
             </DataGrid>            
         </ScrollViewer>
