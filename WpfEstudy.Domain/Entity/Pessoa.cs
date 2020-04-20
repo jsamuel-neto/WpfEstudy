@@ -4,9 +4,8 @@ using System.Text;
 
 namespace WpfEstudy.Domain.Entity
 {
-    public class Pessoa
+    public class Pessoa : Entidade
     {
-        public int id { get; set; }
         public String nome { get; set; }
         public String documento { get; set; }
     }

@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using WpfEstudy.Domain.Entity;
 using WpfEstudy.Domain.Interface.Repository;
 using WpfEstudy.Infrastructure.Context;
 
 namespace WpfEstudy.Infrastructure.Repository
 {
-    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entidade, new()
     {
         protected readonly WpfEstudyDBContext Db;
         protected readonly DbSet<TEntity> DbSet;
@@ -54,8 +55,7 @@ namespace WpfEstudy.Infrastructure.Repository
 
         public virtual async Task Delete(int id)
         {
-            TEntity obj = await FindById(id);
-            DbSet.Remove(obj);
+            DbSet.Remove(new TEntity { id = id });
             await SaveChanges();
         }
 

@@ -6,8 +6,8 @@ namespace WpfEstudy.Domain.DTO
 {
     public class PessoaDTO
     {
-        public int Id { get; set; }
-        public String Nome { get; set; }
-        public int Banco { get; set; }
+        public int id { get; set; }
+        public String nome { get; set; }
+        public String documento { get; set; }
     }
 }

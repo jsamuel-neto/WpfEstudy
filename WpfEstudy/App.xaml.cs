@@ -14,8 +14,11 @@ using WpfEstudy.Domain.Interface.Repository;
 using WpfEstudy.Infrastructure.Repository;
 using WpfEstudy.Domain.Interface.Service;
 using WpfEstudy.Service.Servicos;
+using AutoMapper;
+using WpfEstudy.Domain.Entity;
+using WpfEstudy.Domain.DTO;
 
-namespace WpfEstudy
+namespace WpfEstudy.App
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -45,10 +48,17 @@ namespace WpfEstudy
                     option.UseNpgsql("Host=localhost; Port=5432; Database=MinhaVidaFinanceira; User Id=; Password="),
                     ServiceLifetime.Scoped);
 
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Pessoa, PessoaDTO>().ReverseMap();
+            });
+            IMapper mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddScoped<IPessoaRepository, PessoaRepository>();
             services.AddTransient<IPessoaService, PessoaServico>();
 
-            services.AddTransient(typeof(MainWindow));
+            services.AddTransient(typeof(MainWindow));            
         }
     }
 }

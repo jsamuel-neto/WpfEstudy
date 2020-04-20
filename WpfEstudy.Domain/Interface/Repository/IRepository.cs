@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using WpfEstudy.Domain.Entity;
 
 namespace WpfEstudy.Domain.Interface.Repository
 {
-    public interface IRepository<TEntity> : IDisposable where TEntity : class
+    public interface IRepository<TEntity> : IDisposable where TEntity : Entidade
     {
         Task Add(TEntity obj);
         Task<TEntity> FindById(int id);

@@ -3,28 +3,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfEstudy"
+        xmlns:local="clr-namespace:WpfEstudy.App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Sisitema Teste V.1.0.0" Height="350" Width="525">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="9*" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <Button Margin="3" Padding="3" Content="Novo"/>
-            <Button Margin="3" Padding="3" Content="Editar" />
-            <Button Margin="3" Padding="3" Content="Deletar"/>
-        </StackPanel>
-        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Visible"
-                      VerticalScrollBarVisibility="Hidden">
-            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Pessoas}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
-                    <DataGridTextColumn Header="Nome" Binding="{Binding nome}"/>
-                    <DataGridTextColumn Header="Documento" Binding="{Binding documento}"/>
-                </DataGrid.Columns>                
-            </DataGrid>            
-        </ScrollViewer>
+        <Menu Height="38" Name="menu" Margin="3" VerticalAlignment="Top" BorderThickness="2" Foreground="White"
+               FontSize="16" FontWeight="Bold">
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FF3A60AD" Offset="0.528"/>
+                    <GradientStop Color="#FF6A85D8" Offset="0.01"/>
+                    <GradientStop Color="#FF3464C4" Offset="1"/>
+                    <GradientStop Color="#FF202E7E" Offset="1"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+            <Menu.BitmapEffect>
+                <DropShadowBitmapEffect/>
+            </Menu.BitmapEffect>
+            <MenuItem Header="Cadastro" IsCheckable="False" Click="Cadastro_click">
+                <MenuItem.Icon>
+                    <Image Source="/images/cadastro.png" Width="20" Height="16"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Seguança" IsCheckable="False" Foreground="Orange" FontSize="16">
+                <MenuItem.Icon>
+                    <Image Source="/images/chave.png" Width="20" Height="20"/>
+                </MenuItem.Icon>
+            </MenuItem>            
+        </Menu>
+        <Frame x:Name="Main" NavigationUIVisibility="Hidden" Margin="0,45,0,0" />
     </Grid>
 </Window>

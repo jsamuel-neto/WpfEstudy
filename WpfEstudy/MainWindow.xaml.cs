@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfEstudy.Domain.Entity;
+using WpfEstudy.App.Telas;
+using WpfEstudy.Domain.DTO;
 using WpfEstudy.Domain.Interface.Service;
-using WpfEstudy.Service.ViewModel;
 
 namespace WpfEstudy
 {
@@ -24,15 +13,17 @@ namespace WpfEstudy
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IPessoaService service;
+        private IPessoaService _service;
 
         public MainWindow(IPessoaService pessoaService)
         {
-            InitializeComponent();
-            service = pessoaService;
+            _service = pessoaService;
+            InitializeComponent();            
+        }       
 
-            DataContext = new PessoaViewModel(service);
-        }
-
+        private void Cadastro_click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new WpfEstudy.App.Telas.PessoaListaPage(_service);
+        }        
     }
 }
