@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows;
 using WpfEstudy.App.Telas;
@@ -24,6 +25,7 @@ namespace WpfEstudy
         private void Cadastro_click(object sender, RoutedEventArgs e)
         {
             Main.Content = new WpfEstudy.App.Telas.PessoaListaPage(_service);
-        }        
+        }
+        
     }
 }

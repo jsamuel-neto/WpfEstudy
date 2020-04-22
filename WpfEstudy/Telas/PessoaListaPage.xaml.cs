@@ -49,13 +49,14 @@ namespace WpfEstudy.App.Telas
         {
             if (Pessoas.SelectedItem != null)
             {
-                MessageBoxResult result = MessageBox.Show("Deseja Realmente Excluir esta Pessoa?", "Deletar", MessageBoxButton.YesNo);
+                PessoaDTO pessoa = (PessoaDTO)Pessoas.SelectedItem;
+                var msg = "Deseja Realmente Excluir " + pessoa.nome + " ?";
+                MessageBoxResult result = MessageBox.Show(msg, "Deletar", MessageBoxButton.YesNo);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
                         try
                         {
-                            PessoaDTO pessoa = (PessoaDTO)Pessoas.SelectedItem;
                             await _service.Remove(pessoa.id);
                         }
                         catch (Exception ex)

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Pessoas" Height="326.178" Width="300" WindowStyle="ToolWindow">
+        Title="Pessoas" Height="326.178" Width="300" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner">
     <Grid Margin="3">
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Id"/>

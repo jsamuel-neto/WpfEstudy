@@ -5,33 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfEstudy.App"
         mc:Ignorable="d"
-        Title="Sisitema Teste V.1.0.0" Height="350" Width="525">
-    <Grid>
+        Title="Sistema Teste V.1.0.0" Height="350" Width="525" WindowStartupLocation="CenterOwner" WindowState="Maximized">
+    
+    <Window.Resources>
+        <LinearGradientBrush x:Key="layoutBackground" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FF3A60AD" Offset="0.528"/>
+            <GradientStop Color="#FF6A85D8" Offset="0.01"/>
+            <GradientStop Color="#FF3464C4" Offset="1"/>
+            <GradientStop Color="#FF202E7E" Offset="1"/>
+        </LinearGradientBrush>
+
+        <Style x:Key="MenuItemStyle" TargetType="MenuItem">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF3387FF"/>                    
+                </Trigger>
+            </Style.Triggers>            
+        </Style>
+    </Window.Resources>
+    
+    <Grid>        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Menu Height="38" Name="menu" Margin="3" VerticalAlignment="Top" BorderThickness="2" Foreground="White"
-               FontSize="16" FontWeight="Bold">
-            <Menu.Background>
-                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FF3A60AD" Offset="0.528"/>
-                    <GradientStop Color="#FF6A85D8" Offset="0.01"/>
-                    <GradientStop Color="#FF3464C4" Offset="1"/>
-                    <GradientStop Color="#FF202E7E" Offset="1"/>
-                </LinearGradientBrush>
-            </Menu.Background>
+        <Menu Height="38" Name="menu" Margin="3" VerticalAlignment="Top" BorderThickness="2" Foreground="White" FontSize="16" 
+               FontWeight="Bold" Background="{StaticResource layoutBackground}">
             <Menu.BitmapEffect>
                 <DropShadowBitmapEffect/>
             </Menu.BitmapEffect>
-            <MenuItem Header="Cadastro" IsCheckable="False" Click="Cadastro_click">
+            
+            <MenuItem Header="_Cadastro" Margin="5,5,0,0" Style="{StaticResource MenuItemStyle}">                
                 <MenuItem.Icon>
-                    <Image Source="/images/cadastro.png" Width="20" Height="16"/>
+                    <Image Source="/cadastro.png" Width="20" Height="20" Visibility="Visible"/>
                 </MenuItem.Icon>
+                <MenuItem Header="_Pessoa" Background="{StaticResource layoutBackground}" Click="Cadastro_click">
+                    <MenuItem.Icon>
+                        <Image Source="/grupo.png" Width="20" Height="20"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Banco" Background="{StaticResource layoutBackground}"/>
+                <MenuItem Header="_Agencia" Background="{StaticResource layoutBackground}"/>
+                <MenuItem Header="_Conta" Background="{StaticResource layoutBackground}"/>
+                <Separator/>
+                <MenuItem Header="_Tipos" Background="{StaticResource layoutBackground}">
+                    <MenuItem Header="_Conta" Background="{StaticResource layoutBackground}"/>
+                </MenuItem>
             </MenuItem>
-            <MenuItem Header="Seguança" IsCheckable="False" Foreground="Orange" FontSize="16">
+            <MenuItem Header="_Seguança" Foreground="Orange" Margin="5,5,0,0">
                 <MenuItem.Icon>
-                    <Image Source="/images/chave.png" Width="20" Height="20"/>
+                    <Image Source="/chave.png" Width="20" Height="20" Visibility="Visible"/>
                 </MenuItem.Icon>
             </MenuItem>            
         </Menu>
