@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using WpfEstudy.Domain.DTO;
@@ -50,5 +51,9 @@ namespace WpfEstudy.Service.Servicos
             _repository?.Dispose();
         }
 
+        public async Task<IEnumerable<PessoaDTO>> Find(Expression<Func<Pessoa, bool>> predicate)
+        {
+            return _mapper.Map<IEnumerable<PessoaDTO>>(await _repository.Find(predicate));
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace WpfEstudy.App.Telas
         public PessoaListaPage(IPessoaService service)
         {
             _service = service;
+            DataContext = new PessoaDTO();
             InitializeComponent();
         }
 
@@ -31,49 +32,24 @@ namespace WpfEstudy.App.Telas
             DataContext = new { Pessoas = new ObservableCollection<PessoaDTO>(await _service.FindAll()) };
         }
 
-        private void EditarButton_Click(object sender, RoutedEventArgs e)
+        private async void BuscaButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Pessoas.SelectedItem != null)
-            {
-                var pcw = new WpfEstudy.App.Telas.PessoaInsertWindow(_service);
-                pcw.DataContext = (PessoaDTO)Pessoas.SelectedItem;
-                pcw.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Selecione uma Pessoa Primeiro!", "Alerta");
-            }
+            PessoaDTO pessoa = (PessoaDTO)DataContext;
+            DataContext = new { Pessoas = new ObservableCollection<PessoaDTO>
+                (await _service.Find(p=>p.nome.Contains(pessoa.nome))) };
         }
 
-        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private void Pessoas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Pessoas.SelectedItem != null)
-            {
-                PessoaDTO pessoa = (PessoaDTO)Pessoas.SelectedItem;
-                var msg = "Deseja Realmente Excluir " + pessoa.nome + " ?";
-                MessageBoxResult result = MessageBox.Show(msg, "Deletar", MessageBoxButton.YesNo);
-                switch (result)
-                {
-                    case MessageBoxResult.Yes:
-                        try
-                        {
-                            await _service.Remove(pessoa.id);
-                        }
-                        catch (Exception ex)
-                        {
-                            throw new Exception(ex.Message);
-                        }
-                        break;
-                    case MessageBoxResult.No:
-                        break;
-                }
+            var pcw = new WpfEstudy.App.Telas.PessoaInsertWindow(_service);
+            pcw.DataContext = (PessoaDTO)Pessoas.SelectedItem;
+            pcw.ShowDialog();
+        }
 
-                DataContext = new { Pessoas = new ObservableCollection<PessoaDTO>(await _service.FindAll()) };
-            }
-            else
-            {
-                MessageBox.Show("Selecione uma Pessoa Primeiro!", "Alerta");
-            }
+        private void ExitButton_Click(Object sender, RoutedEventArgs e)
+        {
+            NavigationService.Content = null;
+            NavigationService.RemoveBackEntry();
         }
     }
 }

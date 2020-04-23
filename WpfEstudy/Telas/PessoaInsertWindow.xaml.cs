@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WpfEstudy.Domain.DTO;
 using WpfEstudy.Domain.Interface.Service;
 
@@ -35,6 +26,31 @@ namespace WpfEstudy.App.Telas {
             } catch(Exception ex)
             {
                 throw new Exception(ex.Message);
+            }            
+        }
+
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            PessoaDTO pessoa = (PessoaDTO)DataContext;
+            if (pessoa.id != 0)
+            {
+                var msg = "Deseja Realmente Excluir " + pessoa.nome + " ?";
+                MessageBoxResult result = MessageBox.Show(msg, "Deletar", MessageBoxButton.YesNo);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        try
+                        {
+                            await _service.Remove(pessoa.id);
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception(ex.Message);
+                        }
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                }
             }
 
             DialogResult = true;

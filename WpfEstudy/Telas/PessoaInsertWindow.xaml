@@ -17,12 +17,14 @@
             <DatePicker SelectedDate=""/>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
-                <Button Name="OKButtom" Grid.Column="0" Content="Ok" Margin="3"
+                <Button Name="OKButtom" Grid.Column="0" Content="Gravar" Margin="3"
                         IsDefault="True" Click="OKButtom_Click"/>
-                <Button Grid.Column="1" Content="Cancelar" Margin="3" IsCancel="True"/>
+                <Button Name="DelButtom" Grid.Column="1" Content="Deletar" Margin="3" Click="DeleteButton_Click"/>
+                <Button Grid.Column="2" Content="Cancelar" Margin="3" IsCancel="True"/>
             </Grid>
         </StackPanel>        
     </Grid>

@@ -8,24 +8,61 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Listar Pessoas">
 
+        <Page.Resources>
+            <LinearGradientBrush x:Key="layoutBackground" EndPoint="0,1" StartPoint="0,0">
+                <GradientStop Color="#FF3A60AD" Offset="0.528"/>
+                <GradientStop Color="#FF6A85D8" Offset="0.01"/>
+                <GradientStop Color="#FF3464C4" Offset="1"/>
+                <GradientStop Color="#FF202E7E" Offset="1"/>
+            </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="exitBackground" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FFC10707" Offset="0.528"/>
+            <GradientStop Color="#FFE65555" Offset="0.01"/>
+            <GradientStop Color="#FFC43434" Offset="1"/>
+            <GradientStop Color="#FF7E2020" Offset="1"/>
+        </LinearGradientBrush>
+    </Page.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="9*" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <Button Margin="5" Padding="3" Content="Listar Todos" Click="ListaButton_Click"/>
-            <Button Margin="5" Padding="3" Content="Novo" Click="NovoButton_Click"/>
-            <Button Margin="5" Padding="3" Content="Editar" Click="EditarButton_Click" />
-            <Button Margin="5" Padding="3" Content="Deletar" Click="DeleteButton_Click"/>
+        <TextBlock Text="Pessoas" FontSize="22" FontWeight="Bold" Foreground="#FF3A60AD" Margin="3"/>
+        <Separator VerticalAlignment="Bottom" Margin="3"/>
+        
+        <DockPanel LastChildFill="False">
+            <DockPanel DockPanel.Dock="Right">
+                <Button Margin="3,15,10,15" Padding="3" Content="Novo" Click="NovoButton_Click" Width="40" FontWeight="Bold"
+                        HorizontalAlignment="Right" Background="{StaticResource layoutBackground}" Foreground="White">
+                    <Button.BitmapEffect>
+                        <DropShadowBitmapEffect/>
+                    </Button.BitmapEffect>
+                </Button>
+                <Button Content="Sair" Background="{StaticResource exitBackground}" Margin="3,15,10,15" Width="40"
+                        Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" Padding="3" Click="ExitButton_Click">
+                    <Button.BitmapEffect>
+                        <DropShadowBitmapEffect/>
+                    </Button.BitmapEffect>
+                </Button>
+            </DockPanel>
+        </DockPanel>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="1" MaxHeight="60">
+            <TextBlock Text="Nome:" Margin="0,10,0,25" Padding="8"/>
+            <TextBox Text="{Binding nome}" Margin="0,10,0,25" Width="600" Name="lbname" Padding="3" />
+            <Button Margin="5,10,0,25" Padding="3" Content="Buscar" Click="BuscaButton_Click"/>
+            <Button Margin="5,10,0,25" Padding="3" Content="Buscar Todos" Click="ListaButton_Click"/>
         </StackPanel>
-        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Visible"
-                      VerticalScrollBarVisibility="Hidden">
-            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Pessoas}" Name="Pessoas">
+        
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden" Margin="3">
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Pessoas}" Name="Pessoas" SelectionChanged="Pessoas_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
-                    <DataGridTextColumn Header="Nome" Binding="{Binding nome}"/>
-                    <DataGridTextColumn Header="Documento" Binding="{Binding documento}"/>
+                    <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="40"/>
+                    <DataGridTextColumn Header="Nome" Binding="{Binding nome}" Width="300"/>
+                    <DataGridTextColumn Header="Documento" Binding="{Binding documento}" Width="100"/>                    
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
