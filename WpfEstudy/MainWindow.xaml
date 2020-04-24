@@ -29,7 +29,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Menu Height="38" Name="menu" Margin="2" VerticalAlignment="Top" BorderThickness="2" Foreground="White" FontSize="16" 
+        <Menu Height="38" Name="menu" VerticalAlignment="Top" BorderThickness="2" Foreground="White" FontSize="16" 
                FontWeight="Bold" Background="{StaticResource layoutBackground}">
             <Menu.BitmapEffect>
                 <DropShadowBitmapEffect/>
@@ -48,11 +48,17 @@
                 <MenuItem Header="_Agencia" Background="{StaticResource layoutBackground}"/>
                 <MenuItem Header="_Conta" Background="{StaticResource layoutBackground}"/>
                 <Separator/>
+                <MenuItem Header="_Cartão" Background="{StaticResource layoutBackground}"/>
+                <MenuItem Header="_Carteira" Background="{StaticResource layoutBackground}"/>
+                <Separator/>
                 <MenuItem Header="_Tipos" Background="{StaticResource layoutBackground}">
+                    <MenuItem Header="_Cartão" Background="{StaticResource layoutBackground}"/>
                     <MenuItem Header="_Conta" Background="{StaticResource layoutBackground}"/>
+                    <MenuItem Header="_Consumo" Background="{StaticResource layoutBackground}"/>
+                    <MenuItem Header="_Lançamento" Background="{StaticResource layoutBackground}"/>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Seguança" Foreground="Orange" Margin="5,5,0,0">
+            <MenuItem Header="_Segurança" Foreground="Orange" Margin="5,5,0,0">
                 <MenuItem.Icon>
                     <Image Source="/chave.png" Width="20" Height="20" Visibility="Visible"/>
                 </MenuItem.Icon>

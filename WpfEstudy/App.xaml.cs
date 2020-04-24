@@ -1,12 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using WpfEstudy.Infrastructure.Context;
@@ -58,7 +52,7 @@ namespace WpfEstudy.App
             services.AddScoped<IPessoaRepository, PessoaRepository>();
             services.AddTransient<IPessoaService, PessoaServico>();
 
-            services.AddTransient(typeof(MainWindow));            
+            services.AddTransient(typeof(MainWindow));        
         }
     }
 }

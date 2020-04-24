@@ -29,14 +29,29 @@ namespace WpfEstudy.App.Telas
 
         private async void ListaButton_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new { Pessoas = new ObservableCollection<PessoaDTO>(await _service.FindAll()) };
+            try
+            {
+                DataContext = new { Pessoas = new ObservableCollection<PessoaDTO>(await _service.FindAll()) };
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         private async void BuscaButton_Click(object sender, RoutedEventArgs e)
         {
             PessoaDTO pessoa = (PessoaDTO)DataContext;
-            DataContext = new { Pessoas = new ObservableCollection<PessoaDTO>
-                (await _service.Find(p=>p.nome.Contains(pessoa.nome))) };
+            try
+            {
+                DataContext = new
+                {
+                    Pessoas = new ObservableCollection<PessoaDTO>
+                    (await _service.Find(p => p.nome.Contains(pessoa.nome)))
+                };
+            }catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         private void Pessoas_SelectionChanged(object sender, SelectionChangedEventArgs e)
