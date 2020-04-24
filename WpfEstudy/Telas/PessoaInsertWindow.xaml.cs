@@ -14,7 +14,7 @@ namespace WpfEstudy.App.Telas {
         public PessoaInsertWindow(IPessoaService service)
         {
             _service = service;
-            InitializeComponent();
+           InitializeComponent();
         }
 
         private void OKButtom_Click(object sender, RoutedEventArgs e)

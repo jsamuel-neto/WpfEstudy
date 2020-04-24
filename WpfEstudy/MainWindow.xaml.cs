@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Drawing;
-using System.Threading.Tasks;
-using System.Windows;
-using WpfEstudy.App.Telas;
-using WpfEstudy.Domain.DTO;
+﻿using System.Windows;
 using WpfEstudy.Domain.Interface.Service;
 
 namespace WpfEstudy
